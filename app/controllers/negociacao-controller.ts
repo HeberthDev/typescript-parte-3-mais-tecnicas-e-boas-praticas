@@ -23,6 +23,7 @@ export class NegociacaoController {
     }
 
     public adiciona(): void {
+        const t1 = performance.now();
         /*
             const negociacaoTemporaria = new Negociacao( null, 0, 0 ); Não precisa mais criar essa instância da classe porque pelo método ter se tornado STATIC dentro da classe, é preciso apenas chamar a classe direto e já terá acesso. 
         */
@@ -43,6 +44,8 @@ export class NegociacaoController {
         this.negociacoes.adiciona( negociacao );
         this.limparFormulario();
         this.atualizaView();
+        const t2 = performance.now();
+        console.log(`Tempo de execução do método adiciona: ${ (t2 - t1) / 1000 }`);
     }
 
     private ehDiaUtil( data: Date ) {
