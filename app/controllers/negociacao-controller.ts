@@ -3,6 +3,7 @@ import { MensaegemView } from "../views/mensagem-view.js";
 import { Negociacao } from "../models/negociacao.js";
 import { Negociacoes } from "../models/negociacoes.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 
 export class NegociacaoController {
     private inputData: HTMLInputElement;
@@ -22,6 +23,7 @@ export class NegociacaoController {
         this.negociacoesView.update(this.negociacoes);
     }
 
+    @logarTempoDeExecucao()
     public adiciona(): void {
         /*
             const negociacaoTemporaria = new Negociacao( null, 0, 0 ); Não precisa mais criar essa instância da classe porque pelo método ter se tornado STATIC dentro da classe, é preciso apenas chamar a classe direto e já terá acesso. 
