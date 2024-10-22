@@ -5,10 +5,14 @@ import { Negociacoes } from "../models/negociacoes.js";
 import { NegociacoesView } from "../views/negociacoes-view.js";
 import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { inspect } from "../decorators/inspect.js";
+import { domInjector } from "../decorators/dom-injector.js";
 
 export class NegociacaoController {
+    @domInjector('#data')
     private inputData: HTMLInputElement;
+    @domInjector('#quantidade')
     private inputQuantidade: HTMLInputElement;
+    @domInjector('#valor')
     private inputValor: HTMLInputElement;
     private negociacoes = new Negociacoes();
     private negociacoesView = new NegociacoesView( '#negociacoesView' );
@@ -18,9 +22,9 @@ export class NegociacaoController {
         /*
             Numa situação que uma determinada variável pode ser um determinado tipo ou NULL ativamos a opção de "strictNullChecks" no arquivo TSCONFIG e colocamos de forma explícita "as HTMLInputElement" como forma de assegurar que será desse tipo. Apesar da possibilidade de ser NULL também e talvez quebrar o código.
         */
-        this.inputData = document.querySelector( '#data' ) as HTMLInputElement;
-        this.inputQuantidade = document.querySelector( '#quantidade' ) as HTMLInputElement;
-        this.inputValor = document.querySelector( '#valor' ) as HTMLInputElement;
+        // this.inputData = document.querySelector( '#data' ) as HTMLInputElement;
+        // this.inputQuantidade = document.querySelector( '#quantidade' ) as HTMLInputElement;
+        // this.inputValor = document.querySelector( '#valor' ) as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
 
