@@ -1,13 +1,11 @@
 import { Implimivel } from "../utils/imprimivel.js";
 
-export class Negociacao extends Implimivel {
+export class Negociacao implements Implimivel {
     constructor( 
         private _data: Date,
         public readonly quantidade: number,
         public readonly valor:number
-    ) {
-        super();
-    }
+    ) { }
 
     /* 
         A utilização do STATIC serve para você chamar um determinado método de uma classe sem precisar fazer uma instância de uma classe. Você chamando a própria classe você já acessa o método.
