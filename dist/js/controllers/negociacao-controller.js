@@ -13,6 +13,7 @@ import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js";
 import { inspect } from "../decorators/inspect.js";
 import { domInjector } from "../decorators/dom-injector.js";
 import { NegociacoesService } from "../services/negociacoes-service.js";
+import { imprimir } from "../utils/imprimir.js";
 export class NegociacaoController {
     constructor() {
         this.negociacoes = new Negociacoes();
@@ -28,8 +29,7 @@ export class NegociacaoController {
             return;
         }
         this.negociacoes.adiciona(negociacao);
-        console.log(negociacao.paraTexto());
-        console.log(this.negociacoes.paraTexto());
+        imprimir(negociacao, this.negociacoes);
         console.log(JSON.stringify(this.negociacoes));
         this.limparFormulario();
         this.atualizaView();
